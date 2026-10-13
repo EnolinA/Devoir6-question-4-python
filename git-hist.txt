@@ -17,3 +17,89 @@ Date:   Tue Oct 13 18:01:38 2026 +0000
 
     Merge branch 'main' of https://github.com/EnolinA/Devoir6-question-4-python
 
+commit 77c3f5dbd246e87286539d84f520c0b93fbd3945
+Author: Enolin <enolin.alaux@usherbrooke.ca>
+Date:   Tue Oct 13 18:00:02 2026 +0000
+
+    Ajout de la documentation des fonctions + simplification des fonctions minimum et maximum
+
+diff --git a/devoir6_question4.py b/devoir6_question4.py
+index f5fbdb0..6834fac 100644
+--- a/devoir6_question4.py
++++ b/devoir6_question4.py
+@@ -7,28 +7,63 @@
+ 
+ import numpy
+ 
+-liste = numpy.random.randint(0, high=100, size=30)   #Generating randomly the exam scores list of 30 students
++liste = numpy.random.randint(0, high=101, size=30)   #Generating randomly the exam scores list of 30 students
+ 
+-def main(liste) :                                    #Main function that allows to execute the code correctly
++def main(liste) :                                    
++    """
++    Main function that runs the whole script: it prints the exam scores
++    and the main statistics (mean, maximum, minimum, number of passing students).
++
++    Parameters : liste (numpy.ndarray) - Array of exam scores (integers between 0 and 100).
++    Returns : None - Nothing is returned, the results are printed to the console.
++    """
++    
+     print("La liste des scores d'examen :\n", liste)
+     print("La moyenne est",mean(liste),".")
+-    print("Le maximum est",max(liste), ".")
+-    print("Le minimum est",min(liste), ".")
++    print("Le maximum est",maximum_score(liste), ".")
++    print("Le minimum est",minimum_score(liste), ".")
+     print("Le nombre d'étudiants ayant un score >= 60 est de", passed(liste), ".")
++    
+     return
+ 
+-def mean (check):                                    #Calcultate de mean of the list given
++def mean (check):                                    
++    """
++    Calculate the mean (average) of a list of scores.
++
++    Parameters : check (numpy.ndarray) - Array of exam scores.
++    Returns : numpy.float64 - Mean of all scores in the array.
++    """
++    
+     return numpy.mean(check)
+ 
+-def max (insert):                                    #Determine the maximum of the list given
+-    maximum = numpy.max(insert)
+-    return maximum
++def maximum_score (insert):                                   
++    """
++    Find the highest score in a list of scores.
++
++    Parameters : insert (numpy.ndarray) - Array of exam scores.
++    Returns : numpy.int64 - Maximum score found in the array.
++    """
++    
++    return numpy.max(insert)
++
++def minimum_score (insert2):                                   
++    """
++    Find the lowest score in a list of scores.
++
++    Parameters : insert2 (numpy.ndarray) - Array of exam scores.
++    Returns : numpy.int64 - Minimum score found in the array.
++    """
++ 
++    return numpy.min(insert2)
+ 
+-def min (insert2):                                   #Determine the minimum of the list given
+-    minimum = numpy.min(insert2)
+-    return minimum
++def passed (students):                                
++    """
++    Count how many students passed the exam (score >= 60).
+ 
+-def passed (students):                                #Determine how many students have above or equal 60/100
++    Parameters : students (numpy.ndarray) - Array of exam scores, one per student.
++    Returns : int - Number of students whose score is greater than or equal to 60.
++    """
++    
+     count = 0
+     for ajouter in range(len(students)):              #Check the whole list
+         if students[ajouter] >= 60 :
