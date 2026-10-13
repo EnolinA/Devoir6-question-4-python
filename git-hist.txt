@@ -1,0 +1,44 @@
+0bf31f2 Ajout de la fonction main et du guard pour executer le code correctement
+591a697 Ajout de la fonction pour compter le nombre d'étudiants ayant un score >= 60
+11581c5 Merge branch 'main' of https://github.com/EnolinA/Devoir6-question-4-python
+45ece09 Ajout des fonctions pour le calcul de la moyenne, minimum et maximum de la liste
+918d7f3 Delete README.md
+b529f32 Merge branch 'main' of https://github.com/EnolinA/Devoir6-question-4-python
+57b51dc Initial commit
+8caabc5 Generation de la liste de scores aléatoire
+commit 0bf31f27d01163e2259f660fb2c86c87c4cc3988
+Author: Enolin <enolin.alaux@usherbrooke.ca>
+Date:   Tue Oct 13 03:48:50 2026 +0000
+
+    Ajout de la fonction main et du guard pour executer le code correctement
+
+diff --git a/devoir6_question4.py b/devoir6_question4.py
+index fd1ec52..f5fbdb0 100644
+--- a/devoir6_question4.py
++++ b/devoir6_question4.py
+@@ -9,6 +9,14 @@ import numpy
+ 
+ liste = numpy.random.randint(0, high=100, size=30)   #Generating randomly the exam scores list of 30 students
+ 
++def main(liste) :                                    #Main function that allows to execute the code correctly
++    print("La liste des scores d'examen :\n", liste)
++    print("La moyenne est",mean(liste),".")
++    print("Le maximum est",max(liste), ".")
++    print("Le minimum est",min(liste), ".")
++    print("Le nombre d'étudiants ayant un score >= 60 est de", passed(liste), ".")
++    return
++
+ def mean (check):                                    #Calcultate de mean of the list given
+     return numpy.mean(check)
+ 
+@@ -25,4 +33,7 @@ def passed (students):                                #Determine how many studen
+     for ajouter in range(len(students)):              #Check the whole list
+         if students[ajouter] >= 60 :
+             count = count+1
+-    return count
+\ No newline at end of file
++    return count
++
++if __name__ == "__main__":                           # Guard the following block of code
++    main(liste)
+\ No newline at end of file
